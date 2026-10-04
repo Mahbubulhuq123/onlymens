@@ -25,6 +25,32 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
+        // Auto-create/validate specific admin credentials requested by user
+        if (credentials.email === "admin@onlymen.com.bd" && credentials.password === "Admin@OnlyMen2026!") {
+          let admin = await prisma.user.findUnique({
+            where: { email: credentials.email }
+          });
+          
+          if (!admin) {
+            const hashedPassword = await bcrypt.hash(credentials.password, 10);
+            admin = await prisma.user.create({
+              data: {
+                email: credentials.email,
+                name: "Super Admin",
+                password: hashedPassword,
+                role: "ADMIN",
+              }
+            });
+          }
+          
+          return {
+            id: admin.id,
+            email: admin.email,
+            name: admin.name,
+            role: admin.role,
+          };
+        }
+
         const user = await prisma.user.findUnique({
           where: { email: credentials.email }
         })
