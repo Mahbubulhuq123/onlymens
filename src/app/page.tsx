@@ -177,7 +177,7 @@ export default async function Home() {
             {t.liveLocation}
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight drop-shadow-sm">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight drop-shadow-sm">
             {t.heroTitlePrefix}<span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-blue-600">{t.heroTitleHighlight}</span>{t.heroTitleSuffix}
           </h1>
           
@@ -221,7 +221,7 @@ export default async function Home() {
         
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">{t.servicesTitle}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">{t.servicesTitle}</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">{t.servicesDesc}</p>
           </div>
           
@@ -244,7 +244,7 @@ export default async function Home() {
       <section className="py-32 relative">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">{t.howItWorksTitle}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">{t.howItWorksTitle}</h2>
             <p className="text-muted-foreground text-xl">{t.howItWorksDesc}</p>
           </div>
           
@@ -284,7 +284,7 @@ export default async function Home() {
 
       {/* Premium Trust Section */}
       <section className="py-32 bg-zinc-950 text-zinc-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-200 h-200 bg-primary/20 rounded-full blur-[150px] opacity-50 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 md:w-200 md:h-200 bg-primary/20 rounded-full blur-[100px] md:blur-[150px] opacity-50 pointer-events-none" />
         
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -292,7 +292,7 @@ export default async function Home() {
               <div className="inline-flex items-center rounded-full bg-zinc-800/50 border border-zinc-700 px-4 py-1.5 text-sm font-medium text-zinc-300">
                 <ShieldCheck className="w-4 h-4 mr-2 text-primary" /> {t.trustBadge}
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">{t.trustTitle}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">{t.trustTitle}</h2>
               <p className="text-zinc-400 text-xl leading-relaxed">
                 {t.trustDesc}
               </p>

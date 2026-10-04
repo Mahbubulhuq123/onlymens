@@ -8,6 +8,8 @@ import { LogoutButton } from "./logout-button";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import NotificationBell from "./NotificationBell";
+import { MobileMenu } from "./mobile-menu";
+
 export async function Navbar() {
   const session = await getServerSession(authOptions);
   
@@ -64,6 +66,7 @@ export async function Navbar() {
               </Link>
             </>
           )}
+          <MobileMenu t={{ services: t.services, howItWorks: t.howItWorks, becomeHelper: t.becomeHelper }} />
         </div>
       </div>
     </header>
