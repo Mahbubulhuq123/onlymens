@@ -6,16 +6,18 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useLanguage } from "./language-provider";
 
-// Fix for default marker icon in Leaflet + Webpack
-const icon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+let icon: L.Icon | undefined;
+if (typeof window !== "undefined") {
+  icon = L.icon({
+    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+    iconRetinaUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+    shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+}
 
 interface LeafletMapProps {
   address?: string;
@@ -75,14 +77,14 @@ export default function LeafletMap({ address = "Dhaka, Bangladesh", className = 
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapUpdater center={coords} />
-        <Marker position={coords} icon={icon}>
+        <Marker position={coords} icon={icon as L.Icon}>
           <Popup>
             <div className="font-semibold">{address}</div>
           </Popup>
         </Marker>
       </MapContainer>
       {loading && (
-        <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold shadow-lg border border-white/20 z-[1000] flex items-center gap-2 text-primary">
+        <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold shadow-lg border border-white/20 z-1000 flex items-center gap-2 text-primary">
           <div className="w-3 h-3 rounded-full border-2 border-primary border-t-transparent animate-spin" />
           {lang === 'en' ? 'Locating...' : 'খোঁজ করা হচ্ছে...'}
         </div>

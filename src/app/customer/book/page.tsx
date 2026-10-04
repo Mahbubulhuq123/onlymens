@@ -390,7 +390,7 @@ function BookHelperContent() {
                     </div>
                   </div>
 
-                  <div className="hidden md:block w-full h-[320px]">
+                  <div className="w-full h-62.5 md:h-80">
                     <MapComponent address={location || "Enter location to preview..."} />
                   </div>
                 </div>

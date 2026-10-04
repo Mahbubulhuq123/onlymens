@@ -43,7 +43,7 @@ export default function DashboardClient({ bookings, userName, t }: any) {
       >
         <div>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
-            {t.welcome} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">{userName}!</span>
+            {t.welcome} <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-blue-500">{userName}!</span>
           </h1>
           <p className="text-muted-foreground text-lg">{t.manage}</p>
         </div>
@@ -83,7 +83,7 @@ export default function DashboardClient({ bookings, userName, t }: any) {
           {activeBookings.map((booking: any) => (
             <motion.div variants={itemVariants} key={booking.id} className="relative overflow-hidden group">
               {/* Animated gradient border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-500 to-purple-500 opacity-20 group-hover:opacity-40 transition-opacity rounded-3xl -z-10 blur-xl"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-500 to-purple-500 opacity-20 group-hover:opacity-40 transition-opacity rounded-3xl -z-10 blur-xl"></div>
               
               <div className="bg-background/80 backdrop-blur-xl border border-white/20 shadow-xl rounded-3xl p-6 sm:p-8 relative z-10 transition-transform group-hover:-translate-y-1">
                 <div className="flex flex-col lg:flex-row justify-between gap-8">
@@ -123,7 +123,7 @@ export default function DashboardClient({ bookings, userName, t }: any) {
                     </div>
                   </div>
                   
-                  <div className="flex flex-col items-center justify-center bg-gradient-to-b from-muted/50 to-background border p-8 rounded-3xl min-w-[280px] relative overflow-hidden shadow-inner">
+                  <div className="flex flex-col items-center justify-center bg-linear-to-b from-muted/50 to-background border p-8 rounded-3xl w-full lg:min-w-70 relative overflow-hidden shadow-inner">
                     {/* Decorative bg inside helper card */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
                     
@@ -136,18 +136,18 @@ export default function DashboardClient({ bookings, userName, t }: any) {
                         <p className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full mb-6">Assigned Helper</p>
                         
                         <div className="flex gap-2 w-full flex-wrap justify-center">
-                          <Button className="flex-1 rounded-xl shadow-md h-12 min-w-[80px]" size="sm">
+                          <Button className="flex-1 rounded-xl shadow-md h-12 min-w-20" size="sm">
                             <MapPin className="w-4 h-4 mr-2" /> {t.track}
                           </Button>
                           <Button 
                             variant={activeChat === booking.id ? "default" : "outline"}
-                            className="flex-1 rounded-xl h-12 border-2 min-w-[80px]" 
+                            className="flex-1 rounded-xl h-12 border-2 min-w-20" 
                             size="sm"
                             onClick={() => setActiveChat(activeChat === booking.id ? null : booking.id)}
                           >
                             <MessageSquare className="w-4 h-4 mr-2" /> Chat
                           </Button>
-                          <Button variant="outline" className="flex-1 rounded-xl h-12 border-2 min-w-[80px]" size="sm">
+                          <Button variant="outline" className="flex-1 rounded-xl h-12 border-2 min-w-20" size="sm">
                             <Phone className="w-4 h-4 mr-2" /> {t.call}
                           </Button>
                         </div>
