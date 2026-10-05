@@ -66,7 +66,14 @@ export default function HelperMessagesPage() {
   }, [selectedConvo, fetchMessages]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      const viewport = messagesEndRef.current.closest('[data-radix-scroll-area-viewport]') as HTMLElement;
+      if (viewport) {
+        viewport.scrollTo({ top: viewport.scrollHeight, behavior: 'smooth' });
+      } else {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
   }, [messages]);
 
   const sendMessage = async (e: React.FormEvent) => {

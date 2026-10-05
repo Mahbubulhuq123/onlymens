@@ -51,7 +51,12 @@ export default function ChatBox({ bookingId }: { bookingId: string }) {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      const viewport = scrollRef.current.closest('[data-radix-scroll-area-viewport]') as HTMLElement;
+      if (viewport) {
+        viewport.scrollTo({ top: viewport.scrollHeight, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     }
   }, [messages]);
 
