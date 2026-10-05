@@ -75,8 +75,8 @@ export default async function AdminDashboard() {
   return (
     <div className="min-h-screen bg-muted/20 relative">
       {/* Background blobs for premium feel */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -z-10" />
-      <div className="absolute top-40 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/5 rounded-full blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute top-40 left-0 w-125 h-125 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 bg-card/60 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-xl shadow-primary/5">
@@ -122,7 +122,7 @@ export default async function AdminDashboard() {
             </CardContent>
           </Card>
           
-          <Card className="rounded-3xl border-0 shadow-lg bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-md overflow-hidden group relative">
+          <Card className="rounded-3xl border-0 shadow-lg bg-linear-to-br from-primary/10 to-primary/5 backdrop-blur-md overflow-hidden group relative">
             <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
             <CardContent className="p-6 relative z-10">
               <div className="absolute top-0 right-0 p-6 text-primary/20 group-hover:scale-110 transition-transform"><DollarSign className="w-20 h-20" /></div>
