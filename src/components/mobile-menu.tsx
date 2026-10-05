@@ -25,6 +25,7 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const dashboardUrl = session?.user?.role === "ADMIN" ? "/admin" : (session?.user?.role === "HELPER" ? "/helper/dashboard" : "/customer/dashboard");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -109,7 +110,7 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
               {session?.user ? (
                 <>
                   <Link 
-                    href="/customer/dashboard" 
+                    href={dashboardUrl} 
                     className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                     onClick={() => setIsOpen(false)}
                   >

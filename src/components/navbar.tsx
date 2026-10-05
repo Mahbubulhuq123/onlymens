@@ -25,6 +25,8 @@ export async function Navbar() {
     signup: lang === "en" ? "Sign Up" : "সাইন আপ",
   };
 
+  const dashboardUrl = session?.user?.role === "ADMIN" ? "/admin" : (session?.user?.role === "HELPER" ? "/helper/dashboard" : "/customer/dashboard");
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -43,7 +45,7 @@ export async function Navbar() {
             <>
               <NotificationBell />
               <div className="hidden md:flex items-center space-x-2">
-                <Link href="/customer/dashboard" className={buttonVariants({ variant: "ghost" })}>
+                <Link href={dashboardUrl} className={buttonVariants({ variant: "ghost" })}>
                   {t.dashboard}
                 </Link>
                 <LogoutButton />
