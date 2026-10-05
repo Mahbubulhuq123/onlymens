@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Bell, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
@@ -31,16 +31,7 @@ export default function NotificationBell() {
 
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
-  useEffect(() => {
-    if (session?.user) {
-      fetchNotifications();
-      // Poll every 30 seconds
-      const interval = setInterval(fetchNotifications, 30000);
-      return () => clearInterval(interval);
-    }
-  }, [session]);
-
-  const fetchNotifications = async () => {
+  const fetchNotifications = useCallback(async () => {
     try {
       const res = await fetch("/api/notifications");
       if (res.ok) {
@@ -50,7 +41,19 @@ export default function NotificationBell() {
     } catch (error) {
       console.error("Failed to fetch notifications", error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (session?.user) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      fetchNotifications();
+      // Poll every 30 seconds
+      const interval = setInterval(fetchNotifications, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [session, fetchNotifications]);
+
+
 
   const markAsRead = async (id: string) => {
     try {

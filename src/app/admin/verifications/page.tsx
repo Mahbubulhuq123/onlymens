@@ -49,6 +49,7 @@ export default function AdminVerificationsPage() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchVerifications();
   }, []);
 
@@ -108,7 +109,7 @@ export default function AdminVerificationsPage() {
           </div>
         </div>
 
-        <div className="bg-card/60 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 min-h-[500px]">
+        <div className="bg-card/60 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 min-h-125">
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
               <Loader2 className="w-12 h-12 animate-spin text-primary/50" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Send, Loader2, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,20 +28,7 @@ export default function ChatBox({ bookingId }: { bookingId: string }) {
   const [isSending, setIsSending] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Poll for new messages every 5 seconds
-  useEffect(() => {
-    fetchMessages();
-    const interval = setInterval(fetchMessages, 5000);
-    return () => clearInterval(interval);
-  }, [bookingId]);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     try {
       const res = await fetch(`/api/messages?bookingId=${bookingId}`);
       if (res.ok) {
@@ -53,7 +40,21 @@ export default function ChatBox({ bookingId }: { bookingId: string }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [bookingId]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchMessages();
+    const interval = setInterval(fetchMessages, 5000);
+    return () => clearInterval(interval);
+  }, [fetchMessages]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
 
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +103,7 @@ export default function ChatBox({ bookingId }: { bookingId: string }) {
   }
 
   return (
-    <div className="flex flex-col h-[500px] max-h-[70vh] bg-background border rounded-2xl overflow-hidden shadow-sm">
+    <div className="flex flex-col h-125 max-h-[70vh] bg-background border rounded-2xl overflow-hidden shadow-sm">
       <div className="bg-primary/5 p-4 border-b font-semibold flex items-center gap-2">
         Chat
       </div>

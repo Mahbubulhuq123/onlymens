@@ -162,7 +162,7 @@ export default function VerificationPage() {
         })}
       </div>
 
-      <div className="bg-card/70 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-primary/5 min-h-[400px]">
+      <div className="bg-card/70 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-primary/5 min-h-100">
         <AnimatePresence mode="wait">
           
           {step === 1 && (
@@ -175,7 +175,7 @@ export default function VerificationPage() {
                     value={bio} 
                     onChange={e => setBio(e.target.value)}
                     placeholder="Tell us about yourself and your experience..." 
-                    className="min-h-[120px] rounded-xl bg-muted/50 border-transparent focus:bg-background resize-none" 
+                    className="min-h-30 rounded-xl bg-muted/50 border-transparent focus:bg-background resize-none" 
                   />
                 </div>
                 <div>

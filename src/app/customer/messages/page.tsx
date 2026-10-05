@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,7 +25,7 @@ export default function CustomerMessagesPage() {
     selectConvo: lang === "en" ? "Select a conversation to start messaging" : "বার্তা পাঠাতে একটি কথোপকথন নির্বাচন করুন"
   };
 
-  const fetchConversations = async () => {
+  const fetchConversations = useCallback(async () => {
     try {
       const res = await fetch("/api/messages/conversations");
       if (res.ok) {
@@ -35,9 +35,9 @@ export default function CustomerMessagesPage() {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
 
-  const fetchMessages = async (bookingId: string) => {
+  const fetchMessages = useCallback(async (bookingId: string) => {
     try {
       const res = await fetch(`/api/messages?bookingId=${bookingId}`);
       if (res.ok) {
@@ -47,21 +47,23 @@ export default function CustomerMessagesPage() {
     } catch (e) {
       console.error(e);
     }
-  };
-
-  useEffect(() => {
-    fetchConversations();
-    const interval = setInterval(fetchConversations, 10000);
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchConversations();
+    const interval = setInterval(fetchConversations, 10000);
+    return () => clearInterval(interval);
+  }, [fetchConversations]);
+
+  useEffect(() => {
     if (selectedConvo) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchMessages(selectedConvo);
       const interval = setInterval(() => fetchMessages(selectedConvo), 3000);
       return () => clearInterval(interval);
     }
-  }, [selectedConvo]);
+  }, [selectedConvo, fetchMessages]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

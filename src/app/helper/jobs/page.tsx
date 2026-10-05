@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,11 +27,7 @@ export default function HelperJobsPage() {
   const lang = useLanguage();
   const router = useRouter();
 
-  useEffect(() => {
-    fetchJobs();
-  }, []);
-
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     setIsLoading(true);
     try {
       const res = await fetch("/api/helper/jobs");
@@ -44,7 +40,12 @@ export default function HelperJobsPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchJobs();
+  }, [fetchJobs]);
 
   const handleAcceptJob = async (id: string) => {
     setAcceptingId(id);

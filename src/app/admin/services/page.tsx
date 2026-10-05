@@ -41,6 +41,7 @@ export default function AdminServicesPage() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchServices();
   }, []);
 
@@ -118,7 +119,7 @@ export default function AdminServicesPage() {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-1"
           >
-            <div className="bg-card/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 sticky top-8 relative overflow-hidden">
+            <div className="bg-card/80 backdrop-blur-xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 sticky top-8 overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -z-10" />
               
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -195,7 +196,7 @@ export default function AdminServicesPage() {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-2"
           >
-            <div className="bg-card/60 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 min-h-[400px]">
+            <div className="bg-card/60 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-xl shadow-primary/5 min-h-100">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold flex items-center gap-3">
                   <span className="bg-primary/10 text-primary p-2 rounded-xl"><Layers className="w-6 h-6" /></span> Active Services
