@@ -17,6 +17,8 @@ export default function VerificationPage() {
   const [bio, setBio] = useState("");
   const [skills, setSkills] = useState("");
   const [nidNumber, setNidNumber] = useState("");
+  const [nidImage, setNidImage] = useState<string | null>(null);
+  const [selfieImage, setSelfieImage] = useState<string | null>(null);
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,7 +53,9 @@ export default function VerificationPage() {
         body: JSON.stringify({ 
           bio, 
           skills: skills.split(",").map(s => s.trim()).filter(s => s),
-          nidNumber 
+          nidNumber,
+          nidFrontImage: nidImage ? "uploaded_nid.jpg" : null,
+          nidBackImage: selfieImage ? "uploaded_selfie.jpg" : null
         })
       });
       if(res.ok) {
@@ -198,21 +202,55 @@ export default function VerificationPage() {
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <UploadCloud className="w-6 h-6 text-primary" />
-                    </div>
-                    <p className="font-semibold text-sm">Upload NID (Front)</p>
-                    <p className="text-xs text-muted-foreground mt-1">PNG, JPG up to 5MB</p>
-                  </div>
+                  <label className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group relative overflow-hidden">
+                    <input type="file" className="hidden" accept="image/*" onChange={(e) => {
+                      if(e.target.files?.[0]) {
+                        const file = e.target.files[0];
+                        setNidImage(URL.createObjectURL(file));
+                      }
+                    }} />
+                    {nidImage ? (
+                      <div className="absolute inset-0">
+                        <img src={nidImage} alt="NID Preview" className="w-full h-full object-cover opacity-50" />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                          <CheckCircle2 className="w-10 h-10 text-green-400" />
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          <UploadCloud className="w-6 h-6 text-primary" />
+                        </div>
+                        <p className="font-semibold text-sm">Upload NID (Front)</p>
+                        <p className="text-xs text-muted-foreground mt-1">PNG, JPG up to 5MB</p>
+                      </>
+                    )}
+                  </label>
                   
-                  <div className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <Camera className="w-6 h-6 text-primary" />
-                    </div>
-                    <p className="font-semibold text-sm">Take a Selfie</p>
-                    <p className="text-xs text-muted-foreground mt-1">Match face with NID</p>
-                  </div>
+                  <label className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group relative overflow-hidden">
+                    <input type="file" className="hidden" accept="image/*" capture="user" onChange={(e) => {
+                      if(e.target.files?.[0]) {
+                        const file = e.target.files[0];
+                        setSelfieImage(URL.createObjectURL(file));
+                      }
+                    }} />
+                    {selfieImage ? (
+                      <div className="absolute inset-0">
+                        <img src={selfieImage} alt="Selfie Preview" className="w-full h-full object-cover opacity-50" />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                          <CheckCircle2 className="w-10 h-10 text-green-400" />
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          <Camera className="w-6 h-6 text-primary" />
+                        </div>
+                        <p className="font-semibold text-sm">Take a Selfie</p>
+                        <p className="text-xs text-muted-foreground mt-1">Match face with NID</p>
+                      </>
+                    )}
+                  </label>
                 </div>
                 <p className="text-xs text-muted-foreground flex items-center gap-2 bg-primary/5 p-3 rounded-lg border border-primary/10">
                   <ShieldCheck className="w-4 h-4 text-primary shrink-0" /> Your data is securely encrypted and used only for identity verification purposes.
