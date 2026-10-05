@@ -59,7 +59,7 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-xs sm:max-w-sm bg-background border-l border-border p-6 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-300"
+            className="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-xs sm:max-w-sm bg-white dark:bg-zinc-950 border-l border-border p-6 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-300"
           >
             <div className="flex items-center justify-between mb-8">
               <span className="text-2xl font-bold tracking-tighter text-primary">OnlyMen</span>
