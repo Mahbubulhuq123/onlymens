@@ -203,7 +203,7 @@ export default function VerificationPage() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <label className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group relative overflow-hidden">
-                    <input type="file" className="hidden" accept="image/*" onChange={(e) => {
+                    <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-50" accept="image/*" onClick={(e) => (e.currentTarget.value = '')} onChange={(e) => {
                       if(e.target.files?.[0]) {
                         const file = e.target.files[0];
                         setNidImage(URL.createObjectURL(file));
@@ -228,7 +228,7 @@ export default function VerificationPage() {
                   </label>
                   
                   <label className="border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-muted/20 hover:bg-muted/50 transition-colors cursor-pointer group relative overflow-hidden">
-                    <input type="file" className="hidden" accept="image/*" capture="user" onChange={(e) => {
+                    <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-50" accept="image/*" capture="user" onClick={(e) => (e.currentTarget.value = '')} onChange={(e) => {
                       if(e.target.files?.[0]) {
                         const file = e.target.files[0];
                         setSelfieImage(URL.createObjectURL(file));
