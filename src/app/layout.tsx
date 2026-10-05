@@ -30,8 +30,8 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang={lang} className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
+    <html lang={lang} className={`${inter.variable} h-full antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden" suppressHydrationWarning>
         <SessionProvider session={session}>
           <ThemeProvider
             attribute="class"

@@ -6,15 +6,21 @@ import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+import { signOut } from "next-auth/react";
+
 interface MobileMenuProps {
   t: {
     services: string;
     howItWorks: string;
     becomeHelper: string;
+    dashboard: string;
+    login: string;
+    signup: string;
   };
+  session?: any;
 }
 
-export function MobileMenu({ t }: MobileMenuProps) {
+export function MobileMenu({ t, session }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -83,6 +89,40 @@ export function MobileMenu({ t }: MobileMenuProps) {
               >
                 {t.becomeHelper}
               </Link>
+              {session?.user ? (
+                <>
+                  <Link 
+                    href="/customer/dashboard" 
+                    className="transition-colors hover:text-primary"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t.dashboard}
+                  </Link>
+                  <button 
+                    onClick={() => { setIsOpen(false); signOut({ callbackUrl: "/" }); }}
+                    className="text-left transition-colors hover:text-primary"
+                  >
+                    Log out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link 
+                    href="/login" 
+                    className="transition-colors hover:text-primary"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t.login}
+                  </Link>
+                  <Link 
+                    href="/register" 
+                    className="transition-colors hover:text-primary"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t.signup}
+                  </Link>
+                </>
+              )}
             </nav>
             
             <div className="mt-auto border-t pt-6 text-sm text-muted-foreground text-center">
