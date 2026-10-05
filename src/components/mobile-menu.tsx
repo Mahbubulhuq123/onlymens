@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
@@ -22,7 +23,12 @@ interface MobileMenuProps {
 
 export function MobileMenu({ t, session }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close menu on navigation
   useEffect(() => {
@@ -52,8 +58,8 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
         <Menu className="h-6 w-6" />
       </Button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex justify-end">
+      {isOpen && mounted && document.body ? createPortal(
+        <div className="fixed inset-0 z-100 flex justify-end">
           {/* Backdrop */}
           <div 
             className="fixed inset-0 bg-black/80 transition-opacity" 
@@ -62,7 +68,7 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
           
           {/* Sidebar */}
           <div 
-            className="relative z-[101] w-72 h-full bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
+            className="relative z-101 w-72 h-full bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
           >
             <div className="flex items-center justify-between mb-8">
               <span className="text-2xl font-bold tracking-tighter text-primary">OnlyMen</span>
@@ -138,8 +144,9 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
               &copy; {new Date().getFullYear()} OnlyMen.
             </div>
           </div>
-        </div>
-      )}
+        </div>,
+        document.body
+      ) : null}
     </div>
   );
 }
