@@ -4,11 +4,11 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function acceptJobAction(requestId: string, helperProfileId: string) {
+export async function acceptJobAction(requestId: string, userId: string) {
   try {
     await prisma.booking.update({
       where: { id: requestId },
-      data: { helperId: helperProfileId, status: "ACCEPTED" }
+      data: { helperId: userId, status: "ACCEPTED" }
     });
   } catch (error) {
     console.error("Error accepting job:", error);

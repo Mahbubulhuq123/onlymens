@@ -205,7 +205,7 @@ async function HelperDashboardContent({ userId, lang }: { userId: string, lang: 
                     </div>
                   </div>
                   
-                  <form action={acceptJobAction.bind(null, request.id, helperProfile.id)} className="relative z-10">
+                  <form action={acceptJobAction.bind(null, request.id, userId)} className="relative z-10">
                     <Button type="submit" className="w-full rounded-xl shadow-sm hover:scale-[1.02] transition-transform font-bold">
                       {t.acceptJob}
                     </Button>
