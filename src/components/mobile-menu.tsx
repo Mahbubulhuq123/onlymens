@@ -53,13 +53,16 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
       </Button>
 
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-[100] flex justify-end">
+          {/* Backdrop */}
           <div 
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300" 
+            className="fixed inset-0 bg-black/80 transition-opacity" 
             onClick={() => setIsOpen(false)}
           />
+          
+          {/* Sidebar */}
           <div 
-            className="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-xs sm:max-w-sm bg-white dark:bg-zinc-950 border-l border-border p-6 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-300"
+            className="relative z-[101] w-72 h-full bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
           >
             <div className="flex items-center justify-between mb-8">
               <span className="text-2xl font-bold tracking-tighter text-primary">OnlyMen</span>
@@ -76,21 +79,21 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
             <nav className="flex flex-col gap-6 text-lg font-medium">
               <Link 
                 href="/services" 
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                 onClick={() => setIsOpen(false)}
               >
                 {t.services}
               </Link>
               <Link 
                 href="/how-it-works" 
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                 onClick={() => setIsOpen(false)}
               >
                 {t.howItWorks}
               </Link>
               <Link 
                 href="/become-a-helper" 
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                 onClick={() => setIsOpen(false)}
               >
                 {t.becomeHelper}
@@ -99,14 +102,14 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
                 <>
                   <Link 
                     href="/customer/dashboard" 
-                    className="transition-colors hover:text-primary"
+                    className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                     onClick={() => setIsOpen(false)}
                   >
                     {t.dashboard}
                   </Link>
                   <button 
                     onClick={() => { setIsOpen(false); signOut({ callbackUrl: "/" }); }}
-                    className="text-left transition-colors hover:text-primary"
+                    className="text-left transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                   >
                     Log out
                   </button>
@@ -115,14 +118,14 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
                 <>
                   <Link 
                     href="/login" 
-                    className="transition-colors hover:text-primary"
+                    className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                     onClick={() => setIsOpen(false)}
                   >
                     {t.login}
                   </Link>
                   <Link 
                     href="/register" 
-                    className="transition-colors hover:text-primary"
+                    className="transition-colors hover:text-primary text-zinc-900 dark:text-zinc-100"
                     onClick={() => setIsOpen(false)}
                   >
                     {t.signup}
@@ -131,11 +134,11 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
               )}
             </nav>
             
-            <div className="mt-auto border-t pt-6 text-sm text-muted-foreground text-center">
+            <div className="mt-auto border-t border-zinc-200 dark:border-zinc-800 pt-6 text-sm text-zinc-500 text-center">
               &copy; {new Date().getFullYear()} OnlyMen.
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
