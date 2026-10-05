@@ -1,0 +1,10 @@
+# Never upload local env files — env vars are managed in the Vercel dashboard
+.env
+.env.*
+
+# Local-only artifacts
+.next
+node_modules
+scratch
+*.tsbuildinfo
+*.bak
