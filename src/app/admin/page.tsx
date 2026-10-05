@@ -38,6 +38,8 @@ export default async function AdminDashboard() {
     dbDesc: lang === "en" ? "Prisma connected to Neon PostgreSQL. All systems operational." : "প্রিজমা নিওন পোস্টগ্রেএসকিউএলের সাথে সংযুক্ত। সমস্ত সিস্টেম চালু আছে।",
     helperVer: lang === "en" ? "Helper Verification" : "সাহায্যকারী যাচাইকরণ",
     helperDesc: lang === "en" ? "New helpers are waiting for manual NID verification." : "নতুন সাহায্যকারীরা এনআইডি যাচাইকরণের জন্য অপেক্ষমান।",
+    noPendingDesc: lang === "en" ? "No helpers are waiting for verification right now." : "এই মুহূর্তে কোনো সাহায্যকারী যাচাইকরণের জন্য অপেক্ষমান নেই।",
+    pending: lang === "en" ? "pending" : "অপেক্ষমান",
     reviewQueue: lang === "en" ? "Review Queue" : "পর্যালোচনা করুন"
   };
 
@@ -58,6 +60,10 @@ export default async function AdminDashboard() {
   });
   
   const totalRevenue = completedBookings.reduce((sum, b) => sum + (b.finalPrice || b.estimatedPrice || 0), 0);
+
+  const pendingVerifications = await prisma.helperVerification.count({
+    where: { status: { in: ['PENDING', 'UNDER_REVIEW'] } }
+  });
 
   // Fetch latest bookings
   const latestBookings = await prisma.booking.findMany({
@@ -134,7 +140,9 @@ export default async function AdminDashboard() {
               <h2 className="text-2xl font-bold flex items-center gap-3">
                 <Briefcase className="w-6 h-6 text-primary" /> {t.latest}
               </h2>
-              <Button variant="ghost" className="font-semibold">{t.viewAll} <ArrowRight className="w-4 h-4 ml-1" /></Button>
+              <Button asChild variant="ghost" className="font-semibold">
+                <Link href="/admin/bookings">{t.viewAll} <ArrowRight className="w-4 h-4 ml-1" /></Link>
+              </Button>
             </div>
             
             <div className="bg-card/80 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-xl shadow-primary/5">
@@ -219,12 +227,23 @@ export default async function AdminDashboard() {
                       <ShieldAlert className="w-6 h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-orange-900 dark:text-orange-400">{t.helperVer}</h4>
-                      <p className="text-sm text-orange-800/80 dark:text-orange-400/80 mt-1 font-medium">{t.helperDesc}</p>
+                      <h4 className="font-bold text-orange-900 dark:text-orange-400 flex items-center gap-2">
+                        {t.helperVer}
+                        {pendingVerifications > 0 && (
+                          <span className="px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold uppercase tracking-wider">
+                            {pendingVerifications} {t.pending}
+                          </span>
+                        )}
+                      </h4>
+                      <p className="text-sm text-orange-800/80 dark:text-orange-400/80 mt-1 font-medium">
+                        {pendingVerifications > 0 ? t.helperDesc : t.noPendingDesc}
+                      </p>
                     </div>
                   </div>
-                  <Button className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold h-12 shadow-lg shadow-orange-500/20">
-                    {t.reviewQueue} <ArrowRight className="w-4 h-4 ml-2" />
+                  <Button asChild className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold h-12 shadow-lg shadow-orange-500/20">
+                    <Link href="/admin/verifications">
+                      {t.reviewQueue} <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
