@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import { cookies } from "next/headers";
+import { acceptJobAction } from "./actions";
 
 async function HelperDashboardContent({ userId, lang }: { userId: string, lang: string }) {
   // First, find the helper's profile ID
@@ -204,14 +205,7 @@ async function HelperDashboardContent({ userId, lang }: { userId: string, lang: 
                     </div>
                   </div>
                   
-                  <form action={async () => {
-                    "use server";
-                    await prisma.booking.update({
-                      where: { id: request.id },
-                      data: { helperId: helperProfile.id, status: "ACCEPTED" }
-                    });
-                    revalidatePath("/helper/dashboard");
-                  }} className="relative z-10">
+                  <form action={acceptJobAction.bind(null, request.id, helperProfile.id)} className="relative z-10">
                     <Button type="submit" className="w-full rounded-xl shadow-sm hover:scale-[1.02] transition-transform font-bold">
                       {t.acceptJob}
                     </Button>
