@@ -38,13 +38,22 @@ export async function POST(req: Request) {
       data: { role: 'HELPER' }
     });
 
+    const skillOperations = {
+      connectOrCreate: (skills || []).map((s: string) => ({
+        where: { name: s },
+        create: { name: s }
+      }))
+    };
+
     // Create or update Helper Profile
     const helperProfile = await prisma.helperProfile.upsert({
       where: { userId: session.user.id },
-      update: { skills: skills || [] },
+      update: { 
+        skills: { set: [], ...skillOperations } 
+      },
       create: {
         userId: session.user.id,
-        skills: skills || [],
+        skills: skillOperations,
       }
     });
 

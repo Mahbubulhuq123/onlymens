@@ -61,9 +61,13 @@ export default function VerificationPage() {
       if(res.ok) {
         setStatus("PENDING");
         setStep(4);
+      } else {
+        const data = await res.json();
+        alert(`Failed to submit application: ${data.error || 'Unknown error'}`);
       }
     } catch(e) {
       console.error(e);
+      alert("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
