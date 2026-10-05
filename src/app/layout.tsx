@@ -40,9 +40,11 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <LanguageProvider lang={lang}>
-              <Navbar />
-              <main className="flex-1 flex flex-col">{children}</main>
-              <Footer />
+              <div className="flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden relative">
+                <Navbar />
+                <main className="flex-1 flex flex-col">{children}</main>
+                <Footer />
+              </div>
             </LanguageProvider>
           </ThemeProvider>
         </SessionProvider>

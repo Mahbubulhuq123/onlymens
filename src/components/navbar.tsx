@@ -42,31 +42,22 @@ export async function Navbar() {
           {session?.user ? (
             <>
               <NotificationBell />
-              <Link 
-                href="/customer/dashboard" 
-                className={buttonVariants({ variant: "ghost", className: "hidden md:inline-flex" })}
-              >
-                {t.dashboard}
-              </Link>
-              <div className="hidden md:inline-flex">
+              <div className="hidden md:flex items-center space-x-2">
+                <Link href="/customer/dashboard" className={buttonVariants({ variant: "ghost" })}>
+                  {t.dashboard}
+                </Link>
                 <LogoutButton />
               </div>
             </>
           ) : (
-            <>
-              <Link 
-                href="/login" 
-                className={buttonVariants({ variant: "ghost", className: "hidden md:inline-flex" })}
-              >
+            <div className="hidden md:flex items-center space-x-2">
+              <Link href="/login" className={buttonVariants({ variant: "ghost" })}>
                 {t.login}
               </Link>
-              <Link 
-                href="/register" 
-                className={buttonVariants({ className: "hidden md:inline-flex" })}
-              >
+              <Link href="/register" className={buttonVariants()}>
                 {t.signup}
               </Link>
-            </>
+            </div>
           )}
           <MobileMenu 
             t={{ services: t.services, howItWorks: t.howItWorks, becomeHelper: t.becomeHelper, dashboard: t.dashboard, login: t.login, signup: t.signup }} 

@@ -54,7 +54,7 @@ export function MobileMenu({ t, session }: MobileMenuProps) {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-100">
-          <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-background border-l p-6 shadow-lg sm:max-w-sm flex flex-col h-full animate-in slide-in-from-right">
+          <div className="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-xs sm:max-w-sm bg-background border-l p-6 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-300">
             <div className="flex items-center justify-between mb-8">
               <span className="text-2xl font-bold tracking-tighter text-primary">OnlyMen</span>
               <Button 
