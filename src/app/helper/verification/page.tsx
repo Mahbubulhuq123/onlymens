@@ -300,11 +300,11 @@ export default function VerificationPage() {
           ) : <div />}
           
           {step < 3 ? (
-            <Button onClick={() => setStep(s => s + 1)} className="rounded-xl px-8 shadow-lg shadow-primary/20">
+            <Button onClick={() => setStep(s => s + 1)} className="rounded-xl px-8">
               Continue <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
           ) : (
-            <Button onClick={handleSubmit} disabled={isSubmitting} className="rounded-xl px-8 shadow-lg shadow-primary/20">
+            <Button onClick={handleSubmit} disabled={isSubmitting} className="rounded-xl px-8">
               {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <CheckCircle2 className="w-4 h-4 mr-2" />}
               Submit Application
             </Button>

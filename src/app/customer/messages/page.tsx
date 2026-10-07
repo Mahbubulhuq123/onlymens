@@ -224,7 +224,7 @@ export default function CustomerMessagesPage() {
                   <Button 
                     type="submit" 
                     size="icon" 
-                    className="h-12 w-12 rounded-full shrink-0 shadow-md shadow-primary/20" 
+                    className="h-12 w-12 rounded-xl shrink-0" 
                     disabled={!messageText.trim()}
                   >
                     <Send className="w-5 h-5 ml-1" />

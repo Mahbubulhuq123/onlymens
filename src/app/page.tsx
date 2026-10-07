@@ -80,7 +80,7 @@ async function LiveServices() {
             <p className="text-muted-foreground">{service.description ? translateServiceDesc(service.description) : t.expertHelp}</p>
             <div className="mt-6 flex items-center justify-between">
               <span className="font-bold text-lg">৳{service.basePrice}/hr</span>
-              <Link href={`/customer/book?serviceId=${service.id}`} className={buttonVariants({ variant: "ghost", size: "sm", className: "group-hover:bg-primary group-hover:text-primary-foreground" })}>
+              <Link href={`/customer/book?serviceId=${service.id}`} className={buttonVariants({ variant: "default", size: "sm", className: "rounded-xl font-bold" })}>
                 {t.book}
               </Link>
             </div>
@@ -188,14 +188,14 @@ export default async function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
             <Link 
               href="/customer/book"
-              className={buttonVariants({ size: "lg", className: "w-full sm:w-auto h-14 px-10 text-lg rounded-full shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300" })}
+              className={buttonVariants({ size: "lg", className: "w-full sm:w-auto h-14 px-10 text-lg rounded-2xl font-bold" })}
             >
               {t.bookHelperNow}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
               href="/become-a-helper"
-              className={buttonVariants({ size: "lg", variant: "outline", className: "w-full sm:w-auto h-14 px-10 text-lg rounded-full hover:bg-muted/50 border-2 transition-colors duration-300" })}
+              className={buttonVariants({ size: "lg", variant: "outline", className: "w-full sm:w-auto h-14 px-10 text-lg rounded-2xl font-bold" })}
             >
               {t.becomeHelper}
             </Link>
@@ -232,7 +232,7 @@ export default async function Home() {
           <div className="text-center mt-16">
             <Link 
               href="/customer/book"
-              className={buttonVariants({ variant: "outline", size: "lg", className: "rounded-full font-semibold border-2 hover:bg-primary hover:text-primary-foreground transition-all duration-300" })}
+              className={buttonVariants({ variant: "outline", size: "lg", className: "rounded-2xl font-bold" })}
             >
               {t.exploreServices}
             </Link>

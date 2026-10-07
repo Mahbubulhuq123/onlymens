@@ -42,7 +42,7 @@ export default async function BecomeHelperPage() {
             {t.heroDesc}
           </p>
           <div className="pt-6">
-            <Link href="/register" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-full" })}>
+            <Link href="/register" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-2xl font-bold" })}>
               {t.applyBtn}
             </Link>
           </div>
@@ -114,7 +114,7 @@ export default async function BecomeHelperPage() {
           </div>
           
           <div className="mt-16 text-center">
-             <Link href="/register" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-full" })}>
+             <Link href="/register" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-2xl font-bold" })}>
               {t.signupBtn}
             </Link>
           </div>

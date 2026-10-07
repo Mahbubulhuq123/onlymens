@@ -397,7 +397,7 @@ function BookHelperContent() {
                 
                 <div className="flex gap-4 mt-10">
                   <Button variant="outline" className="w-1/3 h-14 rounded-xl font-semibold border-2" onClick={() => setStep(1)}>{t.back}</Button>
-                  <Button className="w-2/3 h-14 text-lg rounded-xl shadow-lg shadow-primary/25" disabled={!location || !date || !time} onClick={() => setStep(3)}>
+                  <Button className="w-2/3 h-14 text-lg rounded-xl" disabled={!location || !date || !time} onClick={() => setStep(3)}>
                     {t.reviewDetails} <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
@@ -466,7 +466,7 @@ function BookHelperContent() {
                 
                 <div className="flex gap-4 mt-10">
                   <Button variant="outline" className="w-1/3 h-14 rounded-xl font-semibold border-2" onClick={() => setStep(2)}>{t.back}</Button>
-                  <Button className="w-2/3 h-14 text-lg rounded-xl shadow-lg shadow-primary/25" onClick={() => setStep(4)}>
+                  <Button className="w-2/3 h-14 text-lg rounded-xl" onClick={() => setStep(4)}>
                     {t.findHelpers} <Sparkles className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
@@ -527,7 +527,7 @@ function BookHelperContent() {
                       </div>
                     </div>
                     
-                    <Button onClick={handleBook} disabled={isBooking} className="w-full sm:w-auto h-12 px-8 rounded-xl shrink-0 shadow-md shadow-primary/20">
+                    <Button onClick={handleBook} disabled={isBooking} className="w-full sm:w-auto h-12 px-8 rounded-xl shrink-0">
                       {isBooking ? <Loader2 className="w-5 h-5 animate-spin" /> : t.request}
                     </Button>
                   </motion.div>

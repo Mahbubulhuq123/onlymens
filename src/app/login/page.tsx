@@ -112,7 +112,7 @@ export default function LoginPage() {
 
             <Button 
               type="submit" 
-              className="w-full h-12 rounded-xl text-md font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full h-12 rounded-xl text-md font-semibold"
               disabled={isLoading}
             >
               {isLoading ? (

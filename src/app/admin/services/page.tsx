@@ -183,7 +183,7 @@ export default function AdminServicesPage() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full h-12 rounded-xl shadow-lg shadow-primary/20 font-bold mt-2" disabled={isSubmitting}>
+                <Button type="submit" className="w-full h-12 rounded-xl font-bold mt-2" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : "Publish Service"}
                 </Button>
               </form>
@@ -242,7 +242,7 @@ export default function AdminServicesPage() {
                           <Button variant="outline" size="sm" className="flex-1 sm:flex-none rounded-xl h-10 border-primary/20 text-primary hover:bg-primary/5">
                             <Edit className="w-4 h-4 mr-2 sm:mr-0" /> <span className="sm:hidden">Edit</span>
                           </Button>
-                          <Button variant="outline" size="sm" onClick={() => handleDelete(svc.id)} className="flex-1 sm:flex-none rounded-xl h-10 border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700">
+                          <Button variant="destructive" size="sm" onClick={() => handleDelete(svc.id)} className="flex-1 sm:flex-none rounded-xl h-10">
                             <Trash className="w-4 h-4 mr-2 sm:mr-0" /> <span className="sm:hidden">Delete</span>
                           </Button>
                         </div>

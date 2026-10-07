@@ -123,7 +123,7 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                     </div>
                   </div>
 
-                  <Button onClick={() => setStep("payment")} className="w-full h-14 text-lg rounded-xl shadow-lg shadow-primary/20 font-bold">
+                  <Button onClick={() => setStep("payment")} className="w-full h-14 text-lg rounded-xl font-bold">
                     Proceed to Payment <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
@@ -138,11 +138,11 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                 <p className="text-muted-foreground">Total to pay: <strong className="text-foreground">৳{price}</strong></p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <Button 
                   onClick={() => handleMockPayment("bKash")} 
                   disabled={isProcessing}
-                  className="w-full h-20 rounded-3xl bg-[#e2136e] hover:bg-[#c91061] text-white shadow-xl shadow-[#e2136e]/20 flex justify-between px-8 text-xl font-bold"
+                  className="w-full h-20 rounded-2xl bg-gradient-to-b from-[#e2136e] to-[#c91061] hover:from-[#ec257c] hover:to-[#be0e5a] text-white border border-[#a8084e] border-b-[5px] border-b-[#8c0640] shadow-[0_5px_0_#8c0640,0_10px_20px_-6px_rgba(226,19,110,0.5),inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-[4px] active:border-b-[2px] active:shadow-[0_1px_0_#8c0640] flex justify-between px-8 text-xl font-bold transition-all"
                 >
                   <span>Pay with bKash</span>
                   {isProcessing ? <Loader2 className="w-6 h-6 animate-spin" /> : <ChevronRightIcon className="w-6 h-6" />}
@@ -151,7 +151,7 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                 <Button 
                   onClick={() => handleMockPayment("Nagad")} 
                   disabled={isProcessing}
-                  className="w-full h-20 rounded-3xl bg-[#ef4444] hover:bg-[#dc2626] text-white shadow-xl shadow-red-500/20 flex justify-between px-8 text-xl font-bold"
+                  className="w-full h-20 rounded-2xl bg-gradient-to-b from-[#f97316] to-[#ea580c] hover:from-[#fb923c] hover:to-[#c2410c] text-white border border-[#c2410c] border-b-[5px] border-b-[#9a3412] shadow-[0_5px_0_#9a3412,0_10px_20px_-6px_rgba(234,88,12,0.5),inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-[4px] active:border-b-[2px] active:shadow-[0_1px_0_#9a3412] flex justify-between px-8 text-xl font-bold transition-all"
                 >
                   <span>Pay with Nagad</span>
                   {isProcessing ? <Loader2 className="w-6 h-6 animate-spin" /> : <ChevronRightIcon className="w-6 h-6" />}
@@ -160,7 +160,7 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                 <Button 
                   onClick={() => handleMockPayment("Card")} 
                   disabled={isProcessing}
-                  className="w-full h-20 rounded-3xl bg-slate-900 hover:bg-slate-800 text-white shadow-xl shadow-slate-900/20 flex justify-between px-8 text-xl font-bold"
+                  className="w-full h-20 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-850 text-white border border-slate-950 border-b-[5px] border-b-black shadow-[0_5px_0_#000000,0_10px_20px_-6px_rgba(15,23,42,0.5),inset_0_1px_0_rgba(255,255,255,0.2)] active:translate-y-[4px] active:border-b-[2px] active:shadow-[0_1px_0_#000000] flex justify-between px-8 text-xl font-bold transition-all"
                 >
                   <span className="flex items-center gap-2"><CreditCard className="w-6 h-6" /> Credit/Debit Card</span>
                   {isProcessing ? <Loader2 className="w-6 h-6 animate-spin" /> : <ChevronRightIcon className="w-6 h-6" />}
@@ -209,7 +209,7 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                   <Button 
                     onClick={handleReviewSubmit} 
                     disabled={rating === 0 || isProcessing}
-                    className="w-full h-14 text-lg rounded-xl shadow-lg shadow-primary/20 font-bold"
+                    className="w-full h-14 text-lg rounded-xl font-bold"
                   >
                     {isProcessing ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : "Submit Review"}
                   </Button>
@@ -225,7 +225,7 @@ export default function CheckoutClient({ booking }: { booking: any }) {
                 <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-6 animate-pulse" />
                 <h2 className="text-3xl font-extrabold mb-4">Thank You!</h2>
                 <p className="text-muted-foreground mb-8">Your feedback helps keep the OnlyMen community safe and reliable.</p>
-                <Button onClick={() => router.push("/customer/dashboard")} className="w-full h-14 text-lg rounded-xl shadow-lg font-bold">Return to Dashboard</Button>
+                <Button onClick={() => router.push("/customer/dashboard")} className="w-full h-14 text-lg rounded-xl font-bold">Return to Dashboard</Button>
               </div>
             </motion.div>
           )}

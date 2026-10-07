@@ -47,7 +47,7 @@ export default function DashboardClient({ bookings, userName, t }: any) {
           </h1>
           <p className="text-muted-foreground text-lg">{t.manage}</p>
         </div>
-        <Link href="/customer/book" className={buttonVariants({ size: "lg", className: "rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 transition-transform h-14 px-8 text-lg" })}>
+        <Link href="/customer/book" className={buttonVariants({ size: "lg", className: "rounded-2xl h-14 px-8 text-lg" })}>
           <span className="flex items-center gap-2">
             <Activity className="w-5 h-5" /> {t.bookNow}
           </span>
@@ -136,7 +136,7 @@ export default function DashboardClient({ bookings, userName, t }: any) {
                         <p className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full mb-6">Assigned Helper</p>
                         
                         <div className="flex gap-2 w-full flex-wrap justify-center">
-                          <Button className="flex-1 rounded-xl shadow-md h-12 min-w-20" size="sm">
+                          <Button className="flex-1 rounded-xl h-12 min-w-20" size="sm">
                             <MapPin className="w-4 h-4 mr-2" /> {t.track}
                           </Button>
                           <Button 

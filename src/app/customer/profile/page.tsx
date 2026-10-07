@@ -208,7 +208,7 @@ export default function CustomerProfilePage() {
               </div>
 
               <div className="pt-4 flex justify-end">
-                <Button type="submit" disabled={isSaving} className="h-12 px-8 rounded-xl shadow-lg shadow-primary/20">
+                <Button type="submit" disabled={isSaving} className="h-12 px-8 rounded-xl">
                   {isSaving ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <Save className="w-5 h-5 mr-2" />}
                   {t.save}
                 </Button>

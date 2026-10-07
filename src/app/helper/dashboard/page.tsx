@@ -23,7 +23,7 @@ async function HelperDashboardContent({ userId, lang }: { userId: string, lang: 
           <h2 className="text-2xl font-bold mb-4">Complete Your Profile</h2>
           <p className="text-muted-foreground mb-6">You need to complete your onboarding and verification before viewing the dashboard.</p>
           <Link href="/helper/verification">
-            <Button size="lg" className="rounded-xl px-8 shadow-lg shadow-primary/20">Go to Verification</Button>
+            <Button size="lg" className="rounded-xl px-8">Go to Verification</Button>
           </Link>
         </div>
       </div>
@@ -157,7 +157,7 @@ async function HelperDashboardContent({ userId, lang }: { userId: string, lang: 
                         </div>
                       </div>
                       <Link href={`/helper/active-job/${job.id}`} className="w-full">
-                        <Button className="w-full rounded-xl h-12 shadow-md hover:scale-105 transition-transform group-hover:shadow-primary/20">
+                        <Button className="w-full rounded-xl h-12">
                           {t.viewDetails} <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </Link>
@@ -206,7 +206,7 @@ async function HelperDashboardContent({ userId, lang }: { userId: string, lang: 
                   </div>
                   
                   <form action={acceptJobAction.bind(null, request.id, userId)} className="relative z-10">
-                    <Button type="submit" className="w-full rounded-xl shadow-sm hover:scale-[1.02] transition-transform font-bold">
+                    <Button type="submit" className="w-full rounded-xl font-bold">
                       {t.acceptJob}
                     </Button>
                   </form>

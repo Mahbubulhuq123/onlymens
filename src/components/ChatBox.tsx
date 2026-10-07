@@ -161,7 +161,7 @@ export default function ChatBox({ bookingId }: { bookingId: string }) {
           type="submit" 
           disabled={!newMessage.trim() || isSending}
           size="icon" 
-          className="h-12 w-12 rounded-full shrink-0"
+          className="h-12 w-12 rounded-xl shrink-0"
         >
           <Send className="w-5 h-5" />
         </Button>

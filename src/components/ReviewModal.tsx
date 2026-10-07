@@ -62,7 +62,7 @@ export default function ReviewModal({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" className="rounded-xl shadow-md font-bold">
+        <Button variant="default" className="rounded-xl font-bold">
           <Star className="w-4 h-4 mr-2 fill-current" /> {t.leaveReview}
         </Button>
       </DialogTrigger>

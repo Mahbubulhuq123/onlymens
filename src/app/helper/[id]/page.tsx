@@ -82,7 +82,7 @@ async function HelperProfileContent({ id }: { id: string }) {
                 {user.name || "Unknown Helper"} 
               </h1>
               <div className="flex gap-2">
-                <Button asChild className="rounded-xl shadow-lg shadow-primary/20">
+                <Button asChild className="rounded-xl">
                   <Link href={`/customer/book?helperId=${id}`}>
                     Request Helper
                   </Link>

@@ -111,7 +111,7 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
                 
                 <div className="space-y-4">
                   <Button 
-                    className={`w-full h-14 text-lg rounded-xl font-bold transition-all ${booking.status === "ACCEPTED" ? "shadow-lg shadow-primary/20 scale-100" : "scale-[0.98] opacity-80"}`}
+                    className="w-full h-14 text-lg rounded-xl font-bold"
                     disabled={booking.status !== "ACCEPTED" || isUpdating}
                     onClick={() => handleStatusUpdate("HELPER_ON_THE_WAY")}
                     variant={booking.status === "ACCEPTED" ? "default" : "secondary"}
@@ -120,7 +120,7 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
                   </Button>
 
                   <Button 
-                    className={`w-full h-14 text-lg rounded-xl font-bold transition-all ${booking.status === "HELPER_ON_THE_WAY" ? "shadow-lg shadow-primary/20 scale-100" : "scale-[0.98] opacity-80"}`}
+                    className="w-full h-14 text-lg rounded-xl font-bold"
                     disabled={booking.status !== "HELPER_ON_THE_WAY" || isUpdating}
                     onClick={() => handleStatusUpdate("ARRIVED")}
                     variant={booking.status === "HELPER_ON_THE_WAY" ? "default" : "secondary"}
@@ -129,7 +129,7 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
                   </Button>
                   
                   <Button 
-                    className={`w-full h-14 text-lg rounded-xl font-bold transition-all ${booking.status === "ARRIVED" ? "shadow-lg shadow-primary/20 scale-100" : "scale-[0.98] opacity-80"}`}
+                    className="w-full h-14 text-lg rounded-xl font-bold"
                     disabled={booking.status !== "ARRIVED" || isUpdating}
                     onClick={() => handleStatusUpdate("IN_PROGRESS")}
                     variant={booking.status === "ARRIVED" ? "default" : "secondary"}
@@ -138,10 +138,10 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
                   </Button>
                   
                   <Button 
-                    className={`w-full h-14 text-lg rounded-xl font-bold transition-all ${booking.status === "IN_PROGRESS" ? "shadow-lg shadow-green-500/20 bg-green-600 hover:bg-green-700 text-white scale-100" : "scale-[0.98] opacity-80"}`}
+                    className="w-full h-14 text-lg rounded-xl font-bold"
                     disabled={booking.status !== "IN_PROGRESS" || isUpdating}
                     onClick={() => handleStatusUpdate("COMPLETED")}
-                    variant={booking.status === "IN_PROGRESS" ? "default" : "secondary"}
+                    variant={booking.status === "IN_PROGRESS" ? "success" : "secondary"}
                   >
                     {isUpdating && booking.status === "IN_PROGRESS" ? <Loader2 className="w-5 h-5 animate-spin" /> : <><CheckCircle2 className="w-5 h-5 mr-2" /> {t.completeJob}</>}
                   </Button>

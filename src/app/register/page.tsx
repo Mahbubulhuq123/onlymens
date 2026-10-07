@@ -80,12 +80,14 @@ export default function RegisterPage() {
 
             <div className="space-y-4">
               {/* Role Selection */}
-              <div className="flex p-1 bg-muted rounded-xl">
+              <div className="flex p-1 bg-muted rounded-xl gap-1">
                 <button
                   type="button"
                   onClick={() => setRole("CUSTOMER")}
-                  className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-all ${
-                    role === "CUSTOMER" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+                  className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${
+                    role === "CUSTOMER" 
+                      ? "bg-white dark:bg-zinc-850 text-foreground border border-black/10 dark:border-white/10 border-b-[3px] border-b-primary shadow-[0_2px_4px_rgba(0,0,0,0.05)]" 
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {t.customerBtn}
@@ -93,8 +95,10 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setRole("HELPER")}
-                  className={`flex-1 py-2 text-sm font-semibold rounded-lg transition-all ${
-                    role === "HELPER" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+                  className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${
+                    role === "HELPER" 
+                      ? "bg-white dark:bg-zinc-850 text-foreground border border-black/10 dark:border-white/10 border-b-[3px] border-b-primary shadow-[0_2px_4px_rgba(0,0,0,0.05)]" 
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {t.helperBtn}
@@ -147,7 +151,7 @@ export default function RegisterPage() {
 
             <Button 
               type="submit" 
-              className="w-full h-12 rounded-xl text-md font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full h-12 rounded-xl text-md font-semibold"
               disabled={isLoading}
             >
               {isLoading ? (

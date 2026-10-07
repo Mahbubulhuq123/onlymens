@@ -90,7 +90,7 @@ export default async function HowItWorksPage() {
           
           <div className="mt-24 text-center border-t pt-16">
             <h3 className="text-2xl font-bold mb-6">{t.readyTitle}</h3>
-            <Link href="/customer/book" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-full" })}>
+            <Link href="/customer/book" className={buttonVariants({ size: "lg", className: "h-14 px-8 text-lg rounded-2xl font-bold" })}>
               {t.bookNow}
             </Link>
           </div>

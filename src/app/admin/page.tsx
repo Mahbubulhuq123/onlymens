@@ -85,7 +85,7 @@ export default async function AdminDashboard() {
             <p className="text-muted-foreground text-lg">{t.desc}</p>
           </div>
           <div className="mt-6 md:mt-0">
-            <Button asChild size="lg" className="rounded-xl shadow-lg shadow-primary/20 hover:scale-105 transition-transform h-14 px-8 text-md font-semibold">
+            <Button asChild size="lg" className="rounded-xl h-14 px-8 text-md font-semibold">
               <Link href="/admin/services">
                 <Settings className="w-5 h-5 mr-2" /> {t.manageServices}
               </Link>
@@ -240,7 +240,7 @@ export default async function AdminDashboard() {
                       </p>
                     </div>
                   </div>
-                  <Button asChild className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold h-12 shadow-lg shadow-orange-500/20">
+                  <Button asChild className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold h-12">
                     <Link href="/admin/verifications">
                       {t.reviewQueue} <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
