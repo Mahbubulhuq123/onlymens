@@ -66,7 +66,7 @@ export default function ReviewModal({
           <Star className="w-4 h-4 mr-2 fill-current" /> {t.leaveReview}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] rounded-3xl">
+      <DialogContent className="sm:max-w-106.25 rounded-3xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">{t.rateTitle}</DialogTitle>
           <DialogDescription>

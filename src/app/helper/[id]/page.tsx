@@ -186,7 +186,7 @@ async function HelperProfileContent({ id }: { id: string }) {
 export default async function HelperProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 relative pt-8 pb-20">
+    <div className="min-h-screen bg-linear-to-b from-background to-secondary/20 relative pt-8 pb-20">
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading profile...</div>}>
         <HelperProfileContent id={id} />
       </Suspense>

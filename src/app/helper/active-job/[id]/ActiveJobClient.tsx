@@ -80,7 +80,7 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
   return (
     <div className="min-h-screen bg-muted/10 relative pb-20">
       {/* Background aesthetics */}
-      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-primary/10 to-transparent -z-10" />
+      <div className="absolute top-0 left-0 w-full h-72 bg-linear-to-b from-primary/10 to-transparent -z-10" />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="flex items-center justify-between mb-8">
@@ -166,9 +166,9 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
           {/* Details Sidebar */}
           <div className="space-y-6">
             <Card className="rounded-3xl border-0 shadow-lg bg-card/80 backdrop-blur-md overflow-hidden">
-              <div className="h-2 w-full bg-gradient-to-r from-primary to-blue-500" />
+              <div className="h-2 w-full bg-linear-to-r from-primary to-blue-500" />
               <CardContent className="p-6">
-                <h3 className="font-bold text-lg mb-4 text-muted-foreground uppercase tracking-wider text-xs">{t.customer}</h3>
+                <h3 className="font-bold text-xs mb-4 text-muted-foreground uppercase tracking-wider">{t.customer}</h3>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-14 h-14 rounded-full bg-muted overflow-hidden border-2 border-background shadow-sm">
                     <img src={booking.customer.image || `https://i.pravatar.cc/150?u=${booking.customer.id}`} alt="Customer" className="w-full h-full object-cover" />
@@ -193,7 +193,7 @@ export default function ActiveJobClient({ initialBooking }: { initialBooking: an
 
             <Card className="rounded-3xl border-0 shadow-lg bg-card/80 backdrop-blur-md">
               <CardContent className="p-6 space-y-5">
-                <h3 className="font-bold text-lg text-muted-foreground uppercase tracking-wider text-xs">{t.taskInfo}</h3>
+                <h3 className="font-bold text-xs text-muted-foreground uppercase tracking-wider">{t.taskInfo}</h3>
                 
                 <div className="flex items-start gap-3">
                   <div className="bg-primary/10 p-2 rounded-lg text-primary mt-0.5"><CheckCircle2 className="w-4 h-4" /></div>
